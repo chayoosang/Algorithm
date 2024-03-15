@@ -21,21 +21,18 @@ func solution() {
         $0.value > $1.value
     }
     
-    var rank = 1
-    country[sort.first!.key] = rank
     
+    country[sort[0].key] = 1
+    var rank = 2
     for j in 1..<sort.count {
-        if sort[j-1].value == sort[j].value {
-            country[sort[j-1].key] = rank
-            country[sort[j].key] = rank
-            rank += 2
+        if sort[j].value == sort[j-1].value {
+            country[sort[j].key] = country[sort[j-1].key]
         }else {
             country[sort[j].key] = rank
-            rank += 1
         }
-        
+        rank += 1
     }
-    
+
     print(country[k]!)
 }
 solution()
